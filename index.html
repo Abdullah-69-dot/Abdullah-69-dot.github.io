@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Mohammed Yosef - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1d29;
+            color: #e4e6eb;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 29, 41, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e4e6eb;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6rem 5% 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            flex: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 1.2rem;
+            color: #00d9ff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.1rem;
+            color: #b0b3b8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            flex: 0 0 250px;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid #00d9ff;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid #00d9ff;
+            background: transparent;
+            color: #00d9ff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #00d9ff;
+            color: #1a1d29;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-primary {
+            background: #00d9ff;
+            border-color: #00d9ff;
+            color: #1a1d29;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #00d9ff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d9ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: #00d9ff;
+            color: #1a1d29;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: #00d9ff;
+            margin-top: 0.5rem;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #b0b3b8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item, .experience-item {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #00d9ff;
+        }
+
+        .education-item h3, .experience-item h3 {
+            color: #00d9ff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p, .experience-item p {
+            color: #b0b3b8;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: #b0b3b8;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #00d9ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        /* Projects Section */
+        #projects {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d9ff;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+        }
+
+        .project-role {
+            color: #7d8590;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #b0b3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: #b0b3b8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .contact-item h4 {
+            color: #00d9ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #b0b3b8;
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #7d8590;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                margin-bottom: 2rem;
+            }
+
+            .cta-buttons, .social-icons {
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Abdullah Yosef</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Hi, I'm</h2>
+            <h1>Abdullah Mohammed Yosef</h1>
+            <p class="tagline">A self-taught fullstack developer, specializing in building scalable and efficient backend systems with Django and modern web technologies.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="AbdullahYosefCv.pdf" download class="btn">Download Resume</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/Abdullah-69-dot/Portfolio" target="_blank" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/abdullah-mohammed-yosef-974450336/" target="_blank" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:abdullahmmmm64@gmail.com" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="mypic.png" alt="Abdullah Yosef" class="profile-img">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate developer with a strong interest in various technology fields, including web development (with a primary focus on backend systems), cloud computing, data, and AI. I'm also deeply intrigued by business entrepreneurship and the intersection of technology and innovation.</p>
+                <p>Currently pursuing my BSc in Computer Science and Statistics at Helwan University, I've honed my skills through personal projects and enjoy continuously learning and exploring new technologies to expand my expertise.</p>
+                
+                <div class="education-item">
+                    <h3>Helwan University</h3>
+                    <p><strong>BSc of Computer Science and Statistics</strong></p>
+                    <p>Faculty of Science | Expected Graduation: 2025</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Relevant Coursework: Data Structures, Algorithms, Database Systems, Statistical Analysis, Probability Theory, Machine Learning, Operating Systems</p>
+                </div>
+            </div>
+            
+            <div>
+                <h3 style="color: #00d9ff; margin-bottom: 1.5rem; font-size: 1.5rem;">Experience</h3>
+                
+                <div class="experience-item">
+                    <h3>Information Technology Institute (ITI)</h3>
+                    <p><strong>Full-Stack Web Development Trainee</strong></p>
+                    <p>July 2024 – August 2024 | Remote</p>
+                    <ul>
+                        <li>Built a multi-page e-commerce site with Django, PostgreSQL, and Bootstrap</li>
+                        <li>Designed and implemented backend models, forms, and admin interfaces</li>
+                        <li>Applied CRUD operations, user registration, and session-based authentication</li>
+                        <li>Collaborated with a team using Git and GitHub for version control</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Central Agency for Public Mobilization and Statistics (CAPMAS)</h3>
+                    <p><strong>Data Analysis and Python Trainee</strong></p>
+                    <p>June 2024 | Cairo, Egypt</p>
+                    <ul>
+                        <li>Worked with real-world datasets to perform statistical analysis and generate insights</li>
+                        <li>Learned data cleaning, manipulation, and basic statistical modeling using Pandas and Matplotlib</li>
+                        <li>Project focused on analyzing socio-economic indicators in Egypt</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technologies</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Backend & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Django REST Framework</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Frontend</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">SQLite</span>
+                    <span class="skill-tag">Redis</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>DevOps & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Full-Scale E-commerce Platform</h3>
+                <p class="project-role">Backend Developer</p>
+                <p>Developed a full-featured e-commerce platform with product listings, cart system, checkout, and user authentication. Implemented backend logic for sentiment analysis, recommendations engine, and chatbots using Django views and models. Integrated SQLite for development and PostgreSQL for production.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Authentication</span>
+                    <span class="tag">REST API</span>
+                </div>
+                <a href="https://github.com/Abdullah-69-dot/Full-Scale-E-commerce-Platform" target="_blank" style="display: inline-block; margin-top: 1rem; color: #00d9ff; text-decoration: none; font-size: 0.9rem;">
+                    View on GitHub →
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3>Library Management System</h3>
+                <p class="project-role">Backend Developer</p>
+                <p>Built a comprehensive system to manage books, authors, borrowing history, and user roles. Designed relational database models with proper relationships and constraints. Implemented CRUD operations and role-based access control.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">Database Design</span>
+                    <span class="tag">CRUD</span>
+                </div>
+                <a href="https://github.com/Abdullah-69-dot/System-manage-library" target="_blank" style="display: inline-block; margin-top: 1rem; color: #00d9ff; text-decoration: none; font-size: 0.9rem;">
+                    View on GitHub →
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3>Blog Application</h3>
+                <p class="project-role">Backend Developer</p>
+                <p>A Django-based discussion forum platform that allows users to create and participate in threaded discussions across various topic boards. Focused on reusable templates and clear backend architecture with efficient query optimization.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Templates</span>
+                </div>
+                <a href="https://github.com/Abdullah-69-dot/Blog-Application" target="_blank" style="display: inline-block; margin-top: 1rem; color: #00d9ff; text-decoration: none; font-size: 0.9rem;">
+                    View on GitHub →
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3>Product Rater API</h3>
+                <p class="project-role">Backend Developer</p>
+                <p>A RESTful API built with Django REST Framework that allows users to rate and review products. Features include user authentication, product management, rating system, and review functionality. Implemented with proper API documentation and token-based authentication.</p>
+                <div class="project-tags">
+                    <span class="tag">Django REST Framework</span>
+                    <span class="tag">API</span>
+                    <span class="tag">Authentication</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+                <a href="https://github.com/Abdullah-69-dot/Product_Rater_API_Django" target="_blank" style="display: inline-block; margin-top: 1rem; color: #00d9ff; text-decoration: none; font-size: 0.9rem;">
+                    View on GitHub →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-content">
+            <p>I'm currently looking for new opportunities and collaborations. Feel free to reach out!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p><a href="mailto:abdullahmmmm64@gmail.com">abdullahmmmm64@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>📱 Phone</h4>
+                    <p>+20 111 513 6283</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Abdullah Mohammed Yosef. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 29, 41, 1)';
+            } else {
+                header.style.background = 'rgba(26, 29, 41, 0.95)';
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-category, .experience-item, .education-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
